@@ -1,0 +1,412 @@
+{
+  "meta": {
+    "title": "KitNegocio — Contenido listo para Instagram y WhatsApp cada mes",
+    "description": "Packs mensuales Instagram y WhatsApp Business. Starter $11.99 (7 días gratis) o Pro $25.99 (15 días gratis)."
+  },
+  "nav": {
+    "features": "Qué incluye",
+    "howItWorks": "Cómo funciona",
+    "pricing": "Suscripción",
+    "faq": "FAQ",
+    "support": "Soporte",
+    "members": "Mi pack",
+    "enroll": "Ver planes"
+  },
+  "hero": {
+    "badge": "Pack de marzo ya disponible",
+    "trust": "Miles de emprendedores publican sin bloquearse",
+    "title": "Publica y vende sin pensar qué subir",
+    "subtitle": "Cada mes recibes posts, Reels, Stories y mensajes listos para Instagram y WhatsApp Business. Editas en Canva, publicas y listo.",
+    "tags": {
+      "excel": "WhatsApp Business",
+      "canva": "Canva editable",
+      "instant": "Listo en minutos",
+      "monthly": "Pack nuevo cada mes"
+    },
+    "cta": "Ver planes desde $11.99",
+    "ctaSecondary": "Ver el pack del mes",
+    "trialNote": "Starter $11.99 · 7 días gratis  |  Pro $25.99 · 15 días gratis",
+    "secure": "Pago seguro con Stripe",
+    "cancel": "Sin permanencia"
+  },
+  "features": {
+    "title": "Tu pack mensual de contenido",
+    "subtitle": "Toca cualquier recuadro: verás ejemplos en vivo, detalle y video. Sin contratar diseñador.",
+    "tapHint": "Toca para ver ejemplo",
+    "close": "Cerrar",
+    "liveExample": "Ejemplo en vivo",
+    "watchVideo": "Así se usa en la práctica",
+    "cta": "Quiero esto en mi pack — ver planes",
+    "items": {
+      "invoice": "30 posts editables",
+      "quote": "12 guiones de Reels",
+      "calendar": "Stories del mes",
+      "proposal": "Mensajes WhatsApp",
+      "checklist": "Calendario de publicación",
+      "guide": "Banco de captions",
+      "library": "Todos los packs anteriores",
+      "support": "Soporte por email"
+    },
+    "details": {
+      "invoice": {
+        "title": "30 posts listos para tu feed",
+        "desc": "Plantillas Canva para promociones, testimonios, productos y lanzamientos. Cambias logo, colores y textos en minutos.",
+        "example": "Ejemplo: post “Oferta de la semana” con precio, CTA y espacio para tu foto de producto.",
+        "bullets": [
+          "Formatos cuadrado y vertical",
+          "Espacios listos para logo y tipografía",
+          "Ideales para tiendas y servicios"
+        ]
+      },
+      "quote": {
+        "title": "12 guiones de Reels que enganchan",
+        "desc": "Hooks, estructura de 15–30s y CTA final. Solo grabas o usas B-roll y publicas.",
+        "example": "Ejemplo: Reel “3 errores al cotizar” → hook + 3 tips + “escríbeme por WhatsApp”.",
+        "bullets": [
+          "Guiones cortos fáciles de memorizar",
+          "Ideas de tomas y textos en pantalla",
+          "Pensados para vender, no solo “hacer ruido”"
+        ]
+      },
+      "calendar": {
+        "title": "Stories del mes listas",
+        "desc": "Plantillas de encuestas, detrás de cámaras, recordatorios y ofertas flash para Stories.",
+        "example": "Ejemplo: secuencia de 5 Stories “Antes / Después / Precio / FAQ / CTA WhatsApp”.",
+        "bullets": [
+          "Diseño vertical 9:16",
+          "Stickers y zonas para texto",
+          "Para publicar todos los días sin inventar"
+        ]
+      },
+      "proposal": {
+        "title": "Mensajes WhatsApp Business",
+        "desc": "Textos para bienvenida, catálogo, seguimiento y cierre. Los usas tú con tus clientes.",
+        "example": "Ejemplo: “¡Hola! Soy [Nombre]. ¿Buscas [servicio]? Te dejo opciones y precios…”",
+        "bullets": [
+          "Bienvenida + menú de opciones",
+          "Seguimiento post-cotización",
+          "Cierre amable sin sonar agresivo"
+        ]
+      },
+      "checklist": {
+        "title": "Calendario de publicación",
+        "desc": "Plan del mes: qué subir cada día (feed, Reels, Stories) para no improvisar.",
+        "example": "Ejemplo: Lunes tip, Miércoles promo, Viernes testimonio, Domingo Reel.",
+        "bullets": [
+          "Vista semanal clara",
+          "Mix de contenido de valor y venta",
+          "Editable en Excel / Sheets"
+        ]
+      },
+      "guide": {
+        "title": "Banco de captions y hashtags",
+        "desc": "Frases listas para copiar debajo del post, con emojis y hashtags por nicho.",
+        "example": "Ejemplo: caption de lanzamiento + 12 hashtags de belleza / comida / servicios.",
+        "bullets": [
+          "Captions cortos y largos",
+          "CTAs que invitan a escribirte",
+          "Hashtags agrupados por industria"
+        ]
+      },
+      "library": {
+        "title": "Biblioteca de packs anteriores",
+        "desc": "Mientras tu suscripción esté activa, descargas también los packs de meses pasados.",
+        "example": "Ejemplo: abres febrero + marzo y mezclas posts según tu campaña.",
+        "bullets": [
+          "Acceso mientras pagues la suscripción",
+          "Descarga ZIP o archivo por archivo",
+          "Ideal si te unes a mitad de mes"
+        ]
+      },
+      "support": {
+        "title": "Soporte por email",
+        "desc": "Dudas de Canva, descargas o tu suscripción: respondemos en 24–48 h hábiles.",
+        "example": "Ejemplo: “No encuentro el link de Canva” → te guiamos paso a paso.",
+        "bullets": [
+          "Respuesta en horario laboral",
+          "Ayuda con acceso a miembros",
+          "Gestión de suscripción vía Stripe"
+        ]
+      }
+    }
+  },
+  "preview": {
+    "title": "Así se ve el pack de este mes",
+    "subtitle": "Elige una pestaña: verás 1 ejemplo real del pack y una explicación clara de cómo usarlo.",
+    "exampleLabel": "Ejemplo del pack",
+    "howLabel": "Cómo lo usas",
+    "items": {
+      "invoice": {
+        "title": "Feed de Instagram",
+        "desc": "Plantillas cuadradas para tu feed: ofertas, productos y testimonios. Cambias logo, colores y textos en Canva en minutos.",
+        "exampleTitle": "Post: Oferta de la semana",
+        "exampleBody": "Diseño listo con precio, foto del producto y botón “Escríbenos”. Solo pegas tu marca y publicas.",
+        "how": "Abres la plantilla en Canva → cambias imagen y precio → descargas → subes al feed."
+      },
+      "social": {
+        "title": "Reels y Stories",
+        "desc": "Guiones cortos + plantillas verticales para Reels y Stories. Ideal para tips, antes/después y CTAs a WhatsApp.",
+        "exampleTitle": "Reel: 3 tips en 20 segundos",
+        "exampleBody": "Hook en el primer segundo, 3 tips en pantalla y cierre: “Comenta QUIERO y te paso el catálogo”.",
+        "how": "Lees el guión → grabas o usas B-roll → pegas textos del pack → publicas en Reels o Stories."
+      },
+      "proposal": {
+        "title": "WhatsApp Business",
+        "desc": "Mensajes listos para bienvenida, precios y seguimiento. Los usas tú con tus clientes (no es para leer chats ajenos).",
+        "exampleTitle": "Chat: respuesta con precios",
+        "exampleBody": "Cliente pregunta disponibilidad → tú pegas el mensaje con 3 opciones y precios → cierras la venta más rápido.",
+        "how": "Copias la plantilla → personalizas nombre y precios → la guardas en respuestas rápidas de WhatsApp Business."
+      }
+    },
+    "cta": "Quiero mi pack — ver planes"
+  },
+  "testimonials": {
+    "title": "Emprendedores que ya no se traban al publicar",
+    "items": [
+      {
+        "quote": "Antes pasaba horas pensando qué subir. Ahora abro Canva, cambio el logo y publico.",
+        "name": "María G.",
+        "role": "Boutique online, Medellín"
+      },
+      {
+        "quote": "Los mensajes de WhatsApp me ayudaron a cerrar más rápido. Mis clientes responden al toque.",
+        "name": "Carlos R.",
+        "role": "Servicios a domicilio, CDMX"
+      },
+      {
+        "quote": "Por $11.99 al mes tengo contenido nuevo siempre. No vuelvo a comprar packs sueltos.",
+        "name": "Ana L.",
+        "role": "Estética y uñas, Lima"
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "Tan fácil como abrir Canva",
+    "step1": {
+      "title": "Elige un plan y empieza gratis",
+      "desc": "Starter: $11.99/mes con 7 días gratis. Pro: $25.99/mes con 15 días gratis. Cancela cuando quieras."
+    },
+    "step2": {
+      "title": "Descarga el pack del mes",
+      "desc": "En tu área de miembros encuentras posts, Reels, Stories y WhatsApp listos."
+    },
+    "step3": {
+      "title": "Edita y publica",
+      "desc": "Abre en Canva, pon tu logo y colores, publica en Instagram o pega en WhatsApp."
+    },
+    "cta": "Ver planes",
+    "trust": "7 o 15 días gratis · Luego cobro mensual en USD · Cancela en 1 clic"
+  },
+  "pricing": {
+    "title": "Elige tu plan",
+    "subtitle": "Dos opciones claras. Empiezas con días gratis y luego se cobra el plan en USD.",
+    "currency": "USD",
+    "period": "mes",
+    "popular": "Más popular",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "price": "$11.99",
+        "trial": "7 días gratis",
+        "desc": "Ideal para empezar a publicar sin bloquearte",
+        "cta": "Empezar 7 días gratis",
+        "benefits": [
+          "30 posts para Instagram Feed al mes",
+          "12 Reels + Stories listos para publicar",
+          "Plantillas WhatsApp Business (ventas y atención)",
+          "Calendario de publicación del mes",
+          "Plantillas editables en Canva (logo y colores)",
+          "Biblioteca de packs anteriores",
+          "7 días de prueba gratis",
+          "Soporte por email · Cancela en 1 clic"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$25.99",
+        "trial": "15 días gratis",
+        "desc": "Más tiempo de prueba y prioridad de soporte",
+        "cta": "Empezar 15 días gratis",
+        "benefits": [
+          "Todo lo incluido en Starter",
+          "Pack ampliado: más posts, Reels y Stories",
+          "Más guiones y variaciones de copy cada mes",
+          "Plantillas WhatsApp premium (cierres y objeciones)",
+          "Acceso prioritario a nuevos packs",
+          "15 días de prueba gratis",
+          "Soporte prioritario por email",
+          "Cancela en 1 clic · Sin permanencia"
+        ]
+      }
+    },
+    "form": {
+      "title": "Activa tu prueba gratis",
+      "choosePlan": "Elige tu plan",
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "WhatsApp (opcional)",
+      "termsLabel": "He leído y acepto los",
+      "termsLink": "Términos y Condiciones",
+      "privacyLink": "Política de Privacidad",
+      "subscriptionLabel": "Entiendo que tras los días gratis de mi plan se cobrará automáticamente el precio mensual en USD, y puedo cancelar cuando quiera",
+      "dataLabel": "Autorizo el tratamiento de mis datos conforme a la Ley 1581 de 2012 y la Política de Privacidad",
+      "termsAnd": "y",
+      "pay": "Confirmar y activar prueba",
+      "wallets": "Conexión segura · PCI · Stripe · Apple Pay / Google Pay",
+      "bankTitle": "Portal de pago seguro",
+      "bankSubtitle": "KitNegocio · Autorizado · Sesión cifrada",
+      "encrypted": "Datos cifrados",
+      "verified": "Verificado",
+      "trustLine1": "Tus datos viajan cifrados. No almacenamos el número completo de tarjeta.",
+      "trustLine2": "Cobro solo tras los días gratis. Cancela cuando quieras.",
+      "stepLabel": "Paso {n}",
+      "stepPersonal": "Datos personales",
+      "stepPayment": "Datos de tarjeta",
+      "personalTitle": "Identificación del titular",
+      "personalHint": "Como en tu banco: primero te identificas, luego autorizas el pago.",
+      "paymentTitle": "Autorización de tarjeta",
+      "paymentHint": "Ingresa los datos exactamente como aparecen en tu tarjeta.",
+      "continueToCard": "Continuar al pago seguro",
+      "cardNumber": "Número de tarjeta",
+      "cardExpiry": "Fecha de vencimiento",
+      "cardCvc": "Código de seguridad (CVC)",
+      "cardHolder": "Nombre en la tarjeta",
+      "cardSectionTitle": "Método de pago",
+      "cardSectionHint": "Visa, Mastercard y Amex · canal cifrado",
+      "cardInvalid": "Revisa el número, vencimiento, CVC y nombre de la tarjeta.",
+      "paySecure": "Pagar de forma segura",
+      "processing": "Validando con el banco…",
+      "back": "Volver",
+      "orderSummary": "Resumen de la orden",
+      "planLabel": "Plan seleccionado",
+      "dueToday": "Cargo hoy (prueba)",
+      "dueTodayHint": "Se autoriza la tarjeta. El cobro mensual inicia al terminar los días gratis."
+    },
+    "includes": "Lo que incluye",
+    "secureNote": "Pago seguro en USD · Cancela cuando quieras",
+    "floatingFrom": "Desde $11.99 USD/mes",
+    "floatingTrial": "7 o 15 días gratis según el plan"
+  },
+  "faq": {
+    "badge": "Centro de ayuda",
+    "title": "Preguntas sobre la suscripción",
+    "subtitle": "Respuestas claras sobre cobros, cancelación y qué incluye tu pack. Busca o abre cada pregunta.",
+    "searchPlaceholder": "Buscar una pregunta…",
+    "noResults": "No encontramos esa pregunta",
+    "noResultsHint": "Prueba con “cobro”, “cancelar” o “Canva”, o escribe a soporte.",
+    "popularTag": "Frecuente",
+    "ctaTitle": "¿Aún tienes dudas?",
+    "ctaHint": "Nuestro equipo responde por email. Estamos para ayudarte a activar tu pack sin fricción.",
+    "ctaButton": "Hablar con soporte",
+    "items": [
+      {
+        "q": "¿Qué planes hay?",
+        "a": "Starter: $11.99 USD/mes con 7 días gratis. Pro: $25.99 USD/mes con 15 días gratis. Ambos son suscripciones mensuales cancelables."
+      },
+      {
+        "q": "¿Cuándo me cobran?",
+        "a": "Al activar eliges plan y tarjeta. No se cobra durante los días gratis (7 o 15 según el plan). Al terminar la prueba se cobra el precio del plan cada mes."
+      },
+      {
+        "q": "¿Cómo cancelo?",
+        "a": "En tu área de miembros → Gestionar suscripción → cancelas en el portal de Stripe en un clic."
+      },
+      {
+        "q": "¿Los mensajes de WhatsApp son para mi negocio?",
+        "a": "Sí. Plantillas para que tú atiendas y vendas a tus clientes. No son herramientas para leer chats ajenos."
+      },
+      {
+        "q": "¿Necesito Canva Pro?",
+        "a": "No. Funcionan con Canva gratis."
+      },
+      {
+        "q": "¿Qué pasa si cancelo?",
+        "a": "Conservas los archivos que ya descargaste. Pierdes acceso a packs futuros y a la biblioteca online."
+      }
+    ]
+  },
+  "result": {
+    "title": "¡Tu suscripción está activa!",
+    "subtitle": "Tu prueba gratis ya corrió. Descarga el pack de este mes y empieza a publicar hoy.",
+    "accessMembers": "Abrir mi pack",
+    "trialNote": "Starter $11.99 (7 días) o Pro $25.99 (15 días) · Cancela cuando quieras",
+    "reference": "Referencia",
+    "manage": "Gestionar suscripción"
+  },
+  "members": {
+    "title": "Tu pack de contenido",
+    "subtitle": "Descargas del mes + biblioteca de suscriptor",
+    "currentPack": "Pack marzo 2026 — Instagram & WhatsApp",
+    "downloadAll": "Descargar pack completo (ZIP)",
+    "download": "Descargar",
+    "library": "Biblioteca de tu suscripción",
+    "manageSubscription": "Gestionar suscripción",
+    "logout": "Cerrar sesión",
+    "accessTitle": "Entra a tu suscripción",
+    "accessSubtitle": "Usa el email con el que activaste KitNegocio",
+    "accessButton": "Entrar a mi pack",
+    "noAccess": "No hay una suscripción activa con ese email.",
+    "templates": {
+      "invoice": "30 posts Instagram (Canva)",
+      "quote": "12 guiones de Reels",
+      "calendar": "Stories del mes",
+      "proposal": "Kit WhatsApp Business",
+      "checklist": "Calendario de publicación",
+      "guide": "Banco de captions y hashtags"
+    },
+    "packs": {
+      "feb2026": "Pack febrero 2026",
+      "jan2026": "Pack enero 2026"
+    }
+  },
+  "support": {
+    "title": "Soporte",
+    "subtitle": "Dudas de suscripción, descargas o Canva — te respondemos en 24-48 h.",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "subject": "Asunto",
+    "subjects": {
+      "subscription": "Mi suscripción o cobros",
+      "download": "No puedo descargar el pack",
+      "billing": "Facturación",
+      "other": "Otro"
+    },
+    "message": "Mensaje",
+    "paymentRef": "Email de suscripción (opcional)",
+    "send": "Enviar mensaje",
+    "success": "¡Mensaje enviado! Te contactaremos pronto.",
+    "contactInfo": "Contacto",
+    "emailLabel": "Email",
+    "hours": "Horario",
+    "hoursValue": "Lunes a Viernes, 9:00 AM - 6:00 PM (COT)",
+    "response": "Respuesta",
+    "responseValue": "24-48 horas hábiles"
+  },
+  "legal": {
+    "privacy": "Política de Privacidad",
+    "terms": "Términos y Condiciones",
+    "cookies": "Política de Cookies",
+    "legalNotice": "Aviso Legal"
+  },
+  "cookies": {
+    "message": "Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra",
+    "policy": "Política de Cookies",
+    "accept": "Aceptar",
+    "reject": "Rechazar",
+    "configure": "Configurar"
+  },
+  "footer": {
+    "description": "Suscripción mensual de contenido listo para Instagram y WhatsApp Business. Publica, vende y crece sin bloquearte.",
+    "rights": "Todos los derechos reservados.",
+    "company": "KitNegocio Digital S.A.S.",
+    "address": "Disponible en todo el mundo",
+    "contact": "Contacto"
+  },
+  "errors": {
+    "required": "Este campo es obligatorio",
+    "invalidEmail": "Correo electrónico inválido",
+    "termsRequired": "Debes aceptar los términos y la suscripción",
+    "paymentFailed": "Error al activar la suscripción. Intenta de nuevo.",
+    "accessFailed": "No se pudo verificar tu suscripción. Intenta de nuevo."
+  }
+}
