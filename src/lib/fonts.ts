@@ -1,9 +1,6 @@
-import { Figtree } from 'next/font/google';
+import { Figtree, Syne } from 'next/font/google';
 
-/**
- * Una sola familia (ya usada en el proyecto) para títulos y cuerpo.
- * Evita descargas extra de Google Fonts que dejan la app colgada.
- */
+/** Cuerpo legible, técnico y limpio */
 export const body = Figtree({
   subsets: ['latin'],
   variable: '--font-body',
@@ -13,10 +10,11 @@ export const body = Figtree({
   fallback: ['Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
 });
 
-export const display = Figtree({
+/** Display expresivo para marca y titulares */
+export const display = Syne({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['500', '600', '700'],
+  weight: ['500', '600', '700', '800'],
   display: 'swap',
   preload: true,
   fallback: ['Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],

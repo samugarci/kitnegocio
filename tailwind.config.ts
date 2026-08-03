@@ -35,8 +35,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Georgia', 'serif'],
-        sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['var(--font-body)', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
       animation: {
         float: 'float 7s ease-in-out infinite',

@@ -21,7 +21,8 @@ export default function ResultClient() {
     verified: boolean;
     sessionId: string;
     email?: string;
-    subscription?: boolean;
+    purchase?: boolean;
+    plan?: string;
   } | null>(null);
 
   useEffect(() => {
@@ -39,9 +40,6 @@ export default function ResultClient() {
       .then((res) => res.json())
       .then((data) => {
         setSessionData(data);
-        if (data.email) {
-          localStorage.setItem('kitnegocio_email', data.email);
-        }
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -49,45 +47,47 @@ export default function ResultClient() {
 
   if (loading) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
+      <div className="flex min-h-[60vh] items-center justify-center bg-paper">
         <Loader2 className="h-10 w-10 animate-spin text-brand" />
       </div>
     );
   }
 
-  const membersHref = `/${locale}/miembros${
-    sessionData?.email ? `?email=${encodeURIComponent(sessionData.email)}` : ''
-  }`;
+  const membersHref = `/${locale}/miembros`;
 
   return (
-    <section className="page-shell py-12 md:py-20">
+    <section className="relative overflow-hidden bg-paper py-10 md:py-16">
+      <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-brand/12 blur-3xl" />
+      <div className="pointer-events-none absolute -right-16 bottom-10 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
       <div className="relative mx-auto max-w-3xl px-4 md:px-6">
         <FlowSteps current="resultado" />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="overflow-hidden rounded-3xl border border-brand/10 bg-white shadow-[0_30px_60px_-28px_rgba(13,92,99,0.35)]"
+          className="mt-6 overflow-hidden rounded-[2rem] border border-brand/15 bg-white shadow-[0_40px_80px_-40px_rgba(11,18,32,0.4)]"
         >
-          <div className="relative h-40">
-            <Image src={IMAGES.workspace} alt="" fill className="object-cover" sizes="800px" />
-            <div className="absolute inset-0 bg-brand/70" />
+          <div className="relative h-48">
+            <Image src={IMAGES.kitClarity} alt="" fill className="object-cover" sizes="800px" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
               <CheckCircle className="mb-3 h-14 w-14 text-accent" />
               <h1 className="font-display text-2xl font-bold md:text-3xl">{t('title')}</h1>
             </div>
           </div>
 
-          <div className="px-8 py-8 text-center">
+          <div className="bg-paper px-8 py-8 text-center">
             <p className="text-ink-soft">{t('subtitle')}</p>
             {sessionData?.sessionId && (
               <p className="mt-3 text-sm text-ink-faint">
                 {t('reference')}:{' '}
-                <code className="rounded-lg bg-paper px-2 py-1 font-mono text-xs">{sessionData.sessionId}</code>
+                <code className="rounded-lg bg-white px-2 py-1 font-mono text-xs">{sessionData.sessionId}</code>
               </p>
             )}
 
-            <p className="mt-6 rounded-xl bg-accent-light p-4 text-sm text-accent-dark">{t('trialNote')}</p>
+            <p className="mt-6 rounded-2xl border border-accent/20 bg-accent-light p-4 text-sm text-accent-dark">
+              {t('trialNote')}
+            </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <Link href={membersHref} className="btn-accent inline-flex">
@@ -101,8 +101,11 @@ export default function ResultClient() {
               </Link>
             </div>
 
-            <Link href={`/${locale}`} className="mt-6 inline-block text-sm font-medium text-brand hover:underline">
-              ← Volver al inicio
+            <Link
+              href={`/${locale}`}
+              className="mt-6 inline-block text-sm font-medium text-brand hover:underline"
+            >
+              ← {locale === 'en' ? 'Back to home' : 'Volver al inicio'}
             </Link>
           </div>
         </motion.div>

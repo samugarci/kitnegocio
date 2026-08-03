@@ -9,11 +9,6 @@ function isSessionVerified(session: Stripe.Checkout.Session): boolean {
     return true;
   }
 
-  const subscription = session.subscription;
-  if (typeof subscription === 'object' && subscription !== null) {
-    return subscription.status === 'trialing' || subscription.status === 'active';
-  }
-
   return false;
 }
 
@@ -31,21 +26,21 @@ export async function GET(request: NextRequest) {
       sessionId,
       email: request.nextUrl.searchParams.get('email') || 'demo@kitnegocio.com',
       name: 'Demo User',
-      subscription: true,
+      purchase: true,
+      plan: 'full',
     });
   }
 
   try {
-    const session = await stripe.checkout.sessions.retrieve(sessionId, {
-      expand: ['subscription'],
-    });
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     return NextResponse.json({
       verified: isSessionVerified(session),
       sessionId: session.id,
       email: session.customer_email,
       name: session.metadata?.name,
-      subscription: session.mode === 'subscription',
+      purchase: session.mode === 'payment',
+      plan: session.metadata?.plan || 'full',
     });
   } catch {
     return NextResponse.json({ error: 'Invalid session' }, { status: 400 });

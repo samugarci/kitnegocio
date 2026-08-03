@@ -76,9 +76,9 @@ export default function InteractiveBankCard({ value, onChange, labels }: Props) 
             <p className="text-xs text-ink-faint">{labels.secureHint}</p>
           </div>
         </div>
-        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
+        <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-800">
           <Lock className="h-3 w-3" />
-          SSL 256-bit
+          SSL 256-bit · PCI
         </span>
       </div>
 
@@ -178,9 +178,9 @@ export default function InteractiveBankCard({ value, onChange, labels }: Props) 
         </motion.div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-3 rounded-xl border border-slate-200/90 bg-[#F7FAFC] p-4 sm:grid-cols-2">
         <div className="sm:col-span-2">
-          <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink-soft">
+          <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
             {labels.number}
           </label>
           <input
@@ -198,14 +198,14 @@ export default function InteractiveBankCard({ value, onChange, labels }: Props) 
               setFlipped(false);
             }}
             onBlur={() => setFocused(null)}
-            className="bank-input font-mono tracking-wider"
+            className="bank-input !border-slate-200 !bg-white font-mono tracking-wider"
             placeholder="ACCT-000003"
             required
           />
         </div>
 
         <div>
-          <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink-soft">
+          <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
             {labels.expiry}
           </label>
           <input
@@ -222,14 +222,14 @@ export default function InteractiveBankCard({ value, onChange, labels }: Props) 
               setFlipped(false);
             }}
             onBlur={() => setFocused(null)}
-            className="bank-input font-mono"
+            className="bank-input !border-slate-200 !bg-white font-mono"
             placeholder="MM/AA"
             required
           />
         </div>
 
         <div>
-          <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink-soft">
+          <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
             {labels.cvc}
           </label>
           <input
@@ -246,14 +246,14 @@ export default function InteractiveBankCard({ value, onChange, labels }: Props) 
               setFocused(null);
               setFlipped(false);
             }}
-            className="bank-input font-mono"
+            className="bank-input !border-slate-200 !bg-white font-mono"
             placeholder="123"
             required
           />
         </div>
 
         <div className="sm:col-span-2">
-          <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink-soft">
+          <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
             {labels.holder}
           </label>
           <input
@@ -269,11 +269,18 @@ export default function InteractiveBankCard({ value, onChange, labels }: Props) 
               setFlipped(false);
             }}
             onBlur={() => setFocused(null)}
-            className="bank-input uppercase"
+            className="bank-input !border-slate-200 !bg-white uppercase"
             placeholder="Como aparece en la tarjeta"
             required
           />
         </div>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+        <span>Visa</span>
+        <span>Mastercard</span>
+        <span>Amex</span>
+        <span>Cifrado AES-256</span>
       </div>
 
       <AnimatePresence>

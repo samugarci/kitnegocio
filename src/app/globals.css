@@ -22,7 +22,7 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-brand px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-brand-dark hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(14,116,144,0.55)] active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-brand px-6 py-3.5 text-base font-semibold text-white transition-all duration-300 hover:bg-brand-dark hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(14,116,144,0.55)] active:translate-y-0 sm:px-8 sm:py-4 sm:text-lg;
   }
 
   .btn-secondary {
@@ -30,15 +30,15 @@
   }
 
   .btn-accent {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-accent px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-accent-dark hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(240,89,42,0.55)] active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-accent px-6 py-3.5 text-base font-semibold text-white transition-all duration-300 hover:bg-accent-dark hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(240,89,42,0.55)] active:translate-y-0 sm:px-8 sm:py-4 sm:text-lg;
   }
 
   .section-title {
-    @apply font-display text-center text-3xl font-bold tracking-tight text-ink md:text-4xl lg:text-5xl;
+    @apply font-display text-center text-[1.75rem] font-bold tracking-tight text-ink sm:text-3xl md:text-4xl lg:text-5xl;
   }
 
   .section-sub {
-    @apply mx-auto mt-4 max-w-2xl text-center text-lg text-ink-soft;
+    @apply mx-auto mt-3 max-w-2xl text-center text-[15px] text-ink-soft sm:mt-4 sm:text-lg;
   }
 
   .card {
@@ -88,5 +88,26 @@
 
   .legal-content li {
     @apply mb-2;
+  }
+
+  .legal-content a {
+    @apply font-semibold text-brand underline-offset-2 hover:underline;
+  }
+
+  .legal-content table {
+    @apply mb-6 w-full overflow-hidden rounded-xl border border-brand/10 text-left text-sm text-ink-soft;
+  }
+
+  .legal-content thead {
+    @apply bg-brand-light/60 text-ink;
+  }
+
+  .legal-content th,
+  .legal-content td {
+    @apply border-b border-brand/10 px-3 py-2.5 align-top;
+  }
+
+  .legal-content code {
+    @apply rounded bg-slate-100 px-1.5 py-0.5 text-[12px] text-ink;
   }
 }

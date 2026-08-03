@@ -11,7 +11,13 @@ export default async function MiembrosPage({
   setRequestLocale(locale);
 
   return (
-    <Suspense fallback={<div className="flex min-h-[60vh] items-center justify-center">Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="flex min-h-[60vh] items-center justify-center bg-paper text-ink-soft">
+          Loading...
+        </div>
+      }
+    >
       <MembersClient />
     </Suspense>
   );

@@ -1,22 +1,17 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
 type LogoProps = {
   className?: string;
   markClassName?: string;
   wordmark?: boolean;
   inverted?: boolean;
+  compact?: boolean;
 };
 
 /** Marca KN: capas de contenido (feed / stories / mensajes) */
 export function LogoMark({ className = 'h-10 w-10' }: { className?: string }) {
   return (
-    <motion.div
-      whileHover={{ rotate: -3, scale: 1.04 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-      className={`relative ${className}`}
-    >
+    <div className={`relative ${className}`}>
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full">
         <rect width="48" height="48" rx="12" className="fill-brand" />
         <rect x="10" y="12" width="28" height="8" rx="2.5" className="fill-white/95" />
@@ -31,7 +26,7 @@ export function LogoMark({ className = 'h-10 w-10' }: { className?: string }) {
           strokeLinejoin="round"
         />
       </svg>
-    </motion.div>
+    </div>
   );
 }
 
@@ -40,15 +35,16 @@ export default function Logo({
   markClassName = 'h-10 w-10',
   wordmark = true,
   inverted = false,
+  compact = false,
 }: LogoProps) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <LogoMark className={markClassName} />
       {wordmark && (
         <span
-          className={`font-display text-[1.35rem] font-bold tracking-[-0.02em] md:text-xl ${
-            inverted ? 'text-white' : 'text-ink'
-          }`}
+          className={`font-display font-bold tracking-[-0.02em] ${
+            compact ? 'text-base sm:text-lg' : 'text-[1.35rem] md:text-xl'
+          } ${inverted ? 'text-white' : 'text-ink'}`}
         >
           Kit
           <span className={inverted ? 'text-accent' : 'text-brand'}>Negocio</span>

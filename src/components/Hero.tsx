@@ -1,166 +1,117 @@
 'use client';
 
-import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { useRef } from 'react';
-import { ArrowRight, RefreshCw, Images, Clapperboard, MessageCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { IMAGES } from '@/lib/images';
 
-const tiles = [
-  { id: 'posts', icon: Images, labelEs: '30 posts', labelEn: '30 posts', color: 'from-brand to-brand-dark' },
-  { id: 'reels', icon: Clapperboard, labelEs: '12 Reels', labelEn: '12 Reels', color: 'from-accent to-accent-dark' },
-  { id: 'wa', icon: MessageCircle, labelEs: 'WhatsApp', labelEn: 'WhatsApp', color: 'from-cyan-600 to-brand' },
-] as const;
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
   const t = useTranslations('hero');
   const locale = useLocale();
-  const [activeTile, setActiveTile] = useState(0);
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.35]);
 
   return (
-    <section ref={ref} className="relative min-h-[92vh] overflow-hidden">
-      <motion.div style={{ y }} className="absolute inset-0">
+    <section className="relative isolate min-h-[100svh] overflow-hidden bg-[#071018] sm:min-h-[92svh]">
+      {/* Full-bleed visual plane */}
+      <motion.div
+        className="absolute inset-0"
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.6, ease }}
+      >
         <Image
           src={IMAGES.hero}
-          alt="Persona creando contenido en el móvil para redes"
+          alt=""
           fill
           priority
-          className="object-cover object-[center_30%]"
+          quality={72}
+          className="object-cover object-[68%_28%] sm:object-[72%_30%] lg:object-[78%_32%]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-brand/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
       </motion.div>
 
-      <motion.div
-        style={{ opacity }}
-        className="relative mx-auto grid min-h-[92vh] max-w-7xl items-end gap-10 px-4 pb-16 pt-24 md:items-center md:grid-cols-2 md:px-6 md:pb-24 md:pt-20"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <p className="mb-3 font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">
+      {/* Atmospheric washes — keep photo real, not flat */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#061018]/55 via-[#061018]/35 to-[#061018] sm:bg-gradient-to-r sm:from-[#061018]/92 sm:via-[#061018]/55 sm:to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#061018] via-transparent to-[#061018]/45" />
+      <div className="pointer-events-none absolute inset-0 bg-grain opacity-40 mix-blend-overlay" />
+      <div className="pointer-events-none absolute -left-20 top-1/3 h-72 w-72 rounded-full bg-brand/20 blur-[100px]" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-accent/15 blur-[110px]" />
+
+      <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-12 pt-24 sm:min-h-[92svh] sm:justify-center sm:px-6 sm:pb-24 md:pt-28 lg:px-8">
+        <div className="w-full max-w-[34rem]">
+          <motion.p
+            className="font-display text-[clamp(2.85rem,12vw,5.5rem)] font-extrabold leading-[0.92] tracking-[-0.04em] text-white"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease, delay: 0.08 }}
+          >
             Kit<span className="text-accent">Negocio</span>
-          </p>
-
-          <h1 className="font-display text-3xl font-bold leading-[1.12] text-white md:text-4xl lg:text-[2.75rem]">
-            {t('title')}
-          </h1>
-
-          <p className="mt-5 max-w-lg text-lg text-white/80 md:text-xl">{t('subtitle')}</p>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="#pricing" className="btn-accent group">
-              {t('cta')}
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a
-              href="#preview"
-              className="btn-secondary border-white/30 bg-white/10 text-white hover:border-white hover:bg-white/20"
-            >
-              {t('ctaSecondary')}
-            </a>
-          </div>
-
-          <p className="mt-5 flex items-center gap-2 text-sm text-white/70">
-            <RefreshCw className="h-4 w-4 text-accent" />
-            {t('trialNote')}
-          </p>
-        </motion.div>
-
-        {/* Panel interactivo del pack */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="relative hidden md:block"
-        >
-          <div className="rounded-3xl border border-white/15 bg-white/10 p-5 backdrop-blur-xl">
-            <div className="mb-4 flex items-center justify-between">
-              <p className="text-sm font-semibold text-white/90">Pack del mes</p>
-              <span className="rounded-lg bg-accent px-2.5 py-1 text-xs font-bold text-white">
-                desde $11.99
-              </span>
-            </div>
-
-            <div className="grid grid-cols-3 gap-3">
-              {tiles.map((tile, i) => {
-                const Icon = tile.icon;
-                const active = activeTile === i;
-                return (
-                  <button
-                    key={tile.id}
-                    type="button"
-                    onMouseEnter={() => setActiveTile(i)}
-                    onClick={() => setActiveTile(i)}
-                    className={`interactive-tile text-left ${active ? 'border-accent/70 bg-white/15 ring-2 ring-accent/40' : ''}`}
-                  >
-                    <div className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${tile.color}`}>
-                      <Icon className="h-5 w-5 text-white" />
-                    </div>
-                    <p className="text-xs font-semibold text-white">
-                      {locale === 'en' ? tile.labelEn : tile.labelEs}
-                    </p>
-                  </button>
-                );
-              })}
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTile}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                className="mt-4 overflow-hidden rounded-2xl"
-              >
-                <div className="relative h-44">
-                  <Image
-                    src={activeTile === 0 ? IMAGES.invoice : activeTile === 1 ? IMAGES.calendar : IMAGES.proposal}
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="400px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent" />
-                  <p className="absolute bottom-3 left-3 text-sm font-medium text-white">
-                    {locale === 'en'
-                      ? ['Feed ready to edit', 'Reels scripts included', 'WhatsApp sales messages'][activeTile]
-                      : ['Feed listo para editar', 'Guiones de Reels incluidos', 'Mensajes de venta WhatsApp'][activeTile]}
-                  </p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            <Link
-              href={`/${locale}/inscripcion`}
-              className="btn-primary mt-4 w-full !bg-white !py-3 !text-base !text-ink hover:!bg-brand-light"
-            >
-              {t('cta')}
-            </Link>
-          </div>
+          </motion.p>
 
           <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -left-4 top-8 rounded-2xl border border-white/20 bg-ink/80 px-3 py-2 text-xs font-semibold text-white backdrop-blur"
+            className="mt-5 h-px w-14 origin-left bg-accent sm:mt-7 sm:w-16"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.7, ease, delay: 0.35 }}
+          />
+
+          <motion.h1
+            className="mt-5 max-w-[22ch] font-display text-[1.65rem] font-semibold leading-[1.15] tracking-[-0.025em] text-white sm:mt-6 sm:text-[2.05rem] md:text-[2.45rem]"
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease, delay: 0.22 }}
           >
-            + biblioteca histórica
+            {t('title')}
+          </motion.h1>
+
+          <motion.p
+            className="mt-4 max-w-[36ch] text-[15px] leading-[1.65] text-white/72 sm:mt-5 sm:text-[1.05rem] md:text-[1.1rem]"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease, delay: 0.34 }}
+          >
+            {t('subtitle')}
+          </motion.p>
+
+          <motion.div
+            className="mt-8 flex flex-col gap-3.5 sm:mt-9 sm:flex-row sm:items-center sm:gap-5"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease, delay: 0.46 }}
+          >
+            <a
+              href={`/${locale}/inscripcion`}
+              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-accent px-6 py-4 text-[15px] font-semibold text-white shadow-[0_18px_40px_-18px_rgba(240,89,42,0.85)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-dark hover:shadow-[0_22px_44px_-16px_rgba(240,89,42,0.9)] active:translate-y-0 sm:w-auto sm:px-8 sm:py-[1.05rem] sm:text-base"
+            >
+              {t('cta')}
+              <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+            <a
+              href="#how-it-works"
+              className="inline-flex items-center justify-center gap-2 py-2 text-sm font-medium text-white/65 transition hover:text-white sm:justify-start"
+            >
+              {t('ctaSecondary')}
+              <span aria-hidden className="text-accent">
+                ↓
+              </span>
+            </a>
           </motion.div>
-        </motion.div>
-      </motion.div>
+
+          <motion.p
+            className="mt-6 text-[12px] tracking-wide text-white/40 sm:text-[13px]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.62 }}
+          >
+            {t('trialNote')}
+          </motion.p>
+        </div>
+      </div>
+
+      {/* Soft bottom edge into trust bar */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-ink to-transparent" />
     </section>
   );
 }

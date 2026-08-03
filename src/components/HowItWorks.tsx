@@ -1,7 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { useTranslations, useLocale } from 'next-intl';
 import { CreditCard, Download, PenLine, ArrowRight } from 'lucide-react';
 
 const steps = [
@@ -12,50 +11,46 @@ const steps = [
 
 export default function HowItWorks() {
   const t = useTranslations('howItWorks');
+  const locale = useLocale();
 
   return (
-    <section id="how-it-works" className="bg-brand py-20 text-white md:py-28">
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="font-display text-center text-3xl font-bold md:text-4xl lg:text-5xl"
-        >
-          {t('title')}
-        </motion.h2>
+    <section id="how-it-works" className="bg-brand py-12 text-white sm:py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-display text-[1.75rem] font-bold leading-tight sm:text-3xl md:text-4xl">
+            {t('title')}
+          </h2>
+          <p className="mt-3 text-[15px] leading-relaxed text-white/75 sm:text-lg">{t('subtitle')}</p>
+        </div>
 
-        <div className="mt-16 grid gap-10 md:grid-cols-3">
+        <div className="mt-8 grid gap-3 sm:mt-10 sm:gap-4 md:grid-cols-3">
           {steps.map(({ key, icon: Icon }, i) => (
-            <motion.div
+            <div
               key={key}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="relative text-center"
+              className="rounded-2xl border border-white/15 bg-white/10 p-5 sm:p-6"
             >
-              {i < steps.length - 1 && (
-                <div className="pointer-events-none absolute left-[60%] top-8 hidden h-0.5 w-[80%] bg-white/20 md:block" />
-              )}
-              <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm">
-                <Icon className="h-8 w-8" />
-                <span className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-lg bg-accent text-xs font-bold">
+              <div className="mb-3 flex items-center justify-between sm:mb-4">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 sm:h-12 sm:w-12">
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                </span>
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-bold">
                   {i + 1}
                 </span>
               </div>
-              <h3 className="mb-3 font-display text-xl font-bold">{t(`${key}.title`)}</h3>
-              <p className="text-white/75">{t(`${key}.desc`)}</p>
-            </motion.div>
+              <h3 className="font-display text-lg font-bold sm:text-xl">{t(`${key}.title`)}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/70">{t(`${key}.desc`)}</p>
+            </div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <a href="#pricing" className="btn-accent">
+        <div className="mt-8 flex justify-center sm:mt-10">
+          <a
+            href={`/${locale}/inscripcion`}
+            className="btn-accent w-full !px-6 !py-3.5 !text-base sm:w-auto sm:!px-8 sm:!py-4 sm:!text-lg"
+          >
             {t('cta')}
             <ArrowRight className="h-5 w-5" />
           </a>
-          <p className="mt-5 text-sm text-white/65">{t('trust')}</p>
         </div>
       </div>
     </section>

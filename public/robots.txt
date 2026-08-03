@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /es/admin
+Disallow: /en/admin
+Disallow: /es/miembros
+Disallow: /en/miembros
+
+Sitemap: https://kitnegocio.com/sitemap.xml

@@ -1,45 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { stripe, isStripeDemoMode } from '@/lib/stripe';
+import { SESSION_COOKIE, verifySessionToken } from '@/lib/auth-store';
 
-async function hasActiveSubscription(email: string): Promise<boolean> {
-  const customers = await stripe.customers.list({ email, limit: 1 });
-
-  if (customers.data.length === 0) return false;
-
-  const subscriptions = await stripe.subscriptions.list({
-    customer: customers.data[0].id,
-    status: 'all',
-    limit: 10,
-  });
-
-  return subscriptions.data.some(
-    (sub) => sub.status === 'active' || sub.status === 'trialing'
-  );
-}
-
+/**
+ * Legacy endpoint — access is now session-based.
+ * Returns whether the current cookie session is authorized.
+ */
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json();
+    const token = request.cookies.get(SESSION_COOKIE)?.value;
+    const session = token ? verifySessionToken(token) : null;
 
-    if (!email || typeof email !== 'string') {
-      return NextResponse.json({ error: 'Email required' }, { status: 400 });
+    if (!session) {
+      return NextResponse.json({ hasAccess: false, authenticated: false });
     }
 
-    const normalizedEmail = email.trim().toLowerCase();
-
-    if (isStripeDemoMode()) {
-      const demoEmails = ['demo@kitnegocio.com', 'test@test.com'];
-      const hasAccess = demoEmails.includes(normalizedEmail) || normalizedEmail.includes('@');
-      return NextResponse.json({
-        hasAccess,
-        demo: true,
-        email: normalizedEmail,
-      });
-    }
-
-    const hasAccess = await hasActiveSubscription(normalizedEmail);
-
-    return NextResponse.json({ hasAccess, email: normalizedEmail });
+    const hasAccess = ['demo_active', 'active', 'trialing'].includes(session.status);
+    return NextResponse.json({
+      hasAccess,
+      authenticated: true,
+      email: session.email,
+      plan: session.plan,
+      status: session.status,
+    });
   } catch (error) {
     console.error('Verify access error:', error);
     return NextResponse.json(
@@ -47,4 +29,8 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+export async function GET(request: NextRequest) {
+  return POST(request);
 }

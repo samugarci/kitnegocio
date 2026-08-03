@@ -20,6 +20,7 @@ build-log.txt
 # misc
 .DS_Store
 *.pem
+*.key
 
 # debug
 npm-debug.log*
@@ -29,6 +30,14 @@ yarn-error.log*
 # env files (nunca subir claves)
 .env
 .env*.local
+.env.production
+.env.development
+
+# credenciales locales
+**/CREDENCIALES*.txt
+
+# local auth fallback (hashed passwords)
+/data/
 
 # typescript
 *.tsbuildinfo
