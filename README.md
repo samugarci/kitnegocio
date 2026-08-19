@@ -32,18 +32,24 @@ Guías:
 - Plan de negocio: [docs/plan-negocio.md](docs/plan-negocio.md)
 - Documento legal: [docs/legal.md](docs/legal.md)
 
-## Ejecutar
+## Ejecutar (Windows)
 
-```bash
+1. Instala [Node.js LTS](https://nodejs.org) si no lo tienes (`node -v` debe mostrar v18 o más).
+2. Doble clic en `ABRIR-KITNEGOCIO.cmd` **dentro de la carpeta del proyecto**.
+3. Deja esa ventana negra abierta. La primera vez instala paquetes y tarda.
+4. Cuando salga `Ready`, Edge abre `http://127.0.0.1:3000/es`.
+
+Si Edge dice **localhost rechazó la conexión** (`ERR_CONNECTION_REFUSED`), el servidor no está corriendo. No es un fallo de la página: no hay proceso en el puerto 3000. Vuelve a `ABRIR-KITNEGOCIO.cmd` y no cierres la ventana.
+
+Desde terminal, en la carpeta del repo:
+
+```powershell
+npm install
+copy .env.example .env.local
 npm run dev
 ```
 
-En Windows también puedes usar `ABRIR-KITNEGOCIO.cmd`.
-
-Abre:
-
-- Español: http://localhost:3000/es
-- Inglés: http://localhost:3000/en
+Luego abre http://127.0.0.1:3000/es (mejor que `localhost` en algunos PCs).
 
 ## Páginas
 
@@ -88,7 +94,7 @@ supabase/migrations/   # SQL de perfiles y roles
 
 | Comando | Qué hace |
 |---------|----------|
-| `npm run dev` | Servidor de desarrollo |
+| `npm run dev` | Servidor en http://127.0.0.1:3000 |
 | `npm run build` | Build de producción |
 | `npm start` | Sirve el build |
 | `npm run lint` | ESLint |
