@@ -2,6 +2,39 @@
 
 Suscripción ($16 USD/mes, cobro inmediato al inscribirse, +7 días de bono) con packs de posts, Reels, Stories y mensajes de WhatsApp Business para **tu** negocio. Landing bilingüe, Stripe y área de miembros.
 
+## Cómo abrir el proyecto
+
+### Opción 1 — Doble clic (Windows)
+
+1. Abre la carpeta del repositorio (`kitnegocio`).
+2. Haz **doble clic** en `ABRIR-KITNEGOCIO.cmd`.
+3. Espera a que se abra el navegador en http://localhost:3000/es
+
+La primera vez instala dependencias sola. Necesitas [Node.js 18+](https://nodejs.org). No cierres la ventana **KitNegocio Server**.
+
+### Opción 2 — Abrir en Cursor
+
+1. En Cursor: **File → Open Folder…** (o `Ctrl+K` luego `Ctrl+O`).
+2. Elige la carpeta `kitnegocio` (la que contiene `package.json`).
+3. Abre la terminal (`Ctrl+Ñ` o **Terminal → New Terminal**) y ejecuta:
+
+```powershell
+npm install
+copy .env.example .env.local
+npm run dev
+```
+
+4. Abre http://localhost:3000/es
+
+### Opción 3 — Terminal
+
+```powershell
+cd ruta\a\kitnegocio
+npm install
+copy .env.example .env.local
+npm run dev
+```
+
 ## Requisitos
 
 - Node.js 18+
@@ -9,8 +42,9 @@ Suscripción ($16 USD/mes, cobro inmediato al inscribirse, +7 días de bono) con
 
 ## Instalación
 
+Si no usaste el atajo de doble clic:
+
 ```powershell
-cd c:\Users\rudug\OneDrive\Escritorio\workanna
 npm install
 copy .env.example .env.local
 ```
