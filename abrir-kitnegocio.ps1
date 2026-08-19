@@ -1,12 +1,13 @@
-$ErrorActionPreference = 'SilentlyContinue'
+$ErrorActionPreference = 'Stop'
 
-$project = 'C:\dev\kitnegocio'
+$project = $PSScriptRoot
+Set-Location $project
 $url = 'http://localhost:3000/es'
 
 function Test-KitNegocio {
   try {
     $response = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 3
-    return $response.StatusCode -eq 200 -and $response.Content -match 'KitNegocio'
+    return $response.StatusCode -eq 200
   } catch {
     return $false
   }
@@ -17,20 +18,38 @@ if (Test-KitNegocio) {
   exit 0
 }
 
-$listener = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue
+$ErrorActionPreference = 'SilentlyContinue'
+$listener = Get-NetTCPConnection -LocalPort 3000 -State Listen
 if ($listener) {
-  Stop-Process -Id $listener.OwningProcess -Force -ErrorAction SilentlyContinue
+  Stop-Process -Id $listener.OwningProcess -Force
   Start-Sleep -Seconds 2
 }
+$ErrorActionPreference = 'Stop'
 
-$buildId = Join-Path $project '.next\BUILD_ID'
-$serverCommand = if (Test-Path $buildId) {
-  'npm run start -- -p 3000'
-} else {
-  'npm run dev -- -p 3000'
+if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
+  Add-Type -AssemblyName PresentationFramework
+  [System.Windows.MessageBox]::Show(
+    'Instala Node.js 18 o superior desde https://nodejs.org y vuelve a abrir KitNegocio.',
+    'KitNegocio',
+    'OK',
+    'Error'
+  )
+  exit 1
 }
 
-Start-Process cmd.exe -ArgumentList '/k', "cd /d `"$project`" && title KitNegocio Server && $serverCommand"
+if (-not (Test-Path (Join-Path $project 'node_modules\next'))) {
+  Write-Host 'Instalando dependencias…'
+  npm install
+  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
+
+$nextCache = Join-Path $project '.next'
+$buildId = Join-Path $nextCache 'BUILD_ID'
+if ((Test-Path $nextCache) -and -not (Test-Path $buildId)) {
+  Remove-Item -Recurse -Force $nextCache
+}
+
+Start-Process cmd.exe -ArgumentList '/k', "cd /d `"$project`" && title KitNegocio Server && npm run dev -- -p 3000"
 
 $deadline = (Get-Date).AddMinutes(4)
 do {

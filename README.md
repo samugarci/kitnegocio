@@ -1,25 +1,42 @@
-# KitNegocio — Packs mensuales Instagram & WhatsApp Business
+# KitNegocio — Packs para Instagram y WhatsApp Business
 
-Suscripción ($16 USD/mes, cobro inmediato al inscribirse, +7 días de bono) con packs de posts, Reels, Stories y mensajes de WhatsApp Business para **tu** negocio. Landing bilingüe, Stripe y área de miembros.
+Landing bilingüe, Stripe y área de miembros. Compra única de acceso completo.
 
 ## Requisitos
 
-- Node.js 18+
+- Node.js 18 o superior
 - npm
 
-## Instalación
+## Abrir el proyecto
 
-```powershell
-cd c:\Users\rudug\OneDrive\Escritorio\workanna
+Desde la carpeta del repositorio (da igual la ruta: Escritorio, OneDrive, `C:\dev`, etc.):
+
+```bash
 npm install
-copy .env.example .env.local
+npm run dev
 ```
 
-## Configuración Stripe
+Luego abre:
+
+- Español: http://localhost:3000/es
+- Inglés: http://localhost:3000/en
+
+En Windows también puedes hacer doble clic en `ABRIR-KITNEGOCIO.cmd`. El script detecta la carpeta del proyecto, instala dependencias si faltan y arranca el servidor.
+
+## Configuración
+
+La primera vez se crea `.env.local` a partir de `.env.example`. Sin claves reales de Stripe o Supabase la app corre en **modo demo**.
+
+```bash
+cp .env.example .env.local   # macOS / Linux
+copy .env.example .env.local # Windows
+```
+
+### Stripe (opcional)
 
 1. Crea cuenta en [stripe.com](https://stripe.com)
 2. Obtén tus claves en [dashboard.stripe.com/apikeys](https://dashboard.stripe.com/apikeys)
-3. Activa el **Customer Portal** en Settings → Billing → Customer portal
+3. Activa el Customer Portal en Settings → Billing → Customer portal
 4. Edita `.env.local`:
 
 ```env
@@ -29,37 +46,35 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEXT_PUBLIC_SUPPORT_EMAIL=soporte@kitnegocio.com
 ```
 
-> **Modo demo:** Sin claves Stripe configuradas, el flujo simula suscripción y cualquier email con `@` accede al área de miembros.
+### Supabase (opcional)
 
-## Ejecutar
-
-```powershell
-npm run dev
-```
-
-Abre:
-- Español: http://localhost:3000/es
-- Inglés: http://localhost:3000/en
+Sigue `docs/SUPABASE.md`. Mientras uses placeholders, el registro/login funciona en local (`data/users.json`).
 
 ## Páginas
 
 | Ruta | Descripción |
 |------|-------------|
 | `/es` o `/en` | Landing principal |
-| `/es/inscripcion` | Registro + prueba gratis 7 días |
+| `/es/inscripcion` | Registro y compra |
 | `/es/resultado` | Confirmación post-registro |
 | `/es/miembros` | Área de miembros (descargas) |
-| `/es/soporte` | Contacto soporte |
+| `/es/soporte` | Contacto de soporte |
 | `/es/terminos` | Términos y Condiciones |
 | `/es/privacidad` | Política de Privacidad |
 
+## Documentación
+
+- `docs/SUPABASE.md` — autenticación y base de datos
+- `docs/PLAN-NEGOCIO.md` — plan de negocio
+- `docs/DOCUMENTO-LEGAL-KITNEGOCIO.md` — marco legal
+
 ## Plantillas
 
-Los archivos de demo están en `public/packs/`. Reemplázalos con tus plantillas reales (XLSX, PDF, Canva exports).
+Los archivos de demo están en `public/packs/`. Si faltan las guías PDF, `npm run dev` las genera solos.
 
 ## Producción
 
-```powershell
+```bash
 npm run build
 npm start
 ```

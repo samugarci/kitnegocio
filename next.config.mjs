@@ -32,6 +32,16 @@ const nextConfig = {
     formats: ['image/webp'],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
+  webpack: (config, { dev }) => {
+    if (dev) {
+      config.watchOptions = {
+        poll: 2000,
+        aggregateTimeout: 500,
+        ignored: ['**/node_modules/**', '**/.git/**', '**/.next/**', '**/data/**'],
+      };
+    }
+    return config;
+  },
   async headers() {
     return [
       {
