@@ -1,6 +1,7 @@
 import PDFDocument from 'pdfkit';
 import fs from 'node:fs';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 
 const OUT = path.join(process.cwd(), 'public', 'packs', 'mar-2026');
 fs.mkdirSync(OUT, { recursive: true });
@@ -595,4 +596,15 @@ async function generate(guide) {
 for (const guide of guides) {
   await generate(guide);
   console.log(`Generado: ${guide.file}`);
+}
+
+const zipName = 'kitnegocio-pack-marzo.zip';
+const zipPath = path.join(OUT, zipName);
+const zip = spawnSync('zip', ['-q', '-j', zipPath, ...guides.map((guide) => path.join(OUT, guide.file))], {
+  stdio: 'ignore',
+});
+if (zip.status === 0) {
+  console.log(`Generado: ${zipName}`);
+} else {
+  console.log('ZIP omitido (comando zip no disponible). Las guías PDF sí se generaron.');
 }

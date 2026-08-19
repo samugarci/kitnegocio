@@ -10,13 +10,13 @@ Hasta que pegues claves reales, el registro/login funciona en modo local seguro
    - Project URL → `NEXT_PUBLIC_SUPABASE_URL`
    - `anon` `public` → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `service_role` `secret` → `SUPABASE_SERVICE_ROLE_KEY` (solo servidor, nunca en el cliente)
-3. Pega las tres variables en `C:\dev\kitnegocio\.env.local` (reemplaza los placeholders).
+3. Pega las tres variables en `.env.local` (reemplaza los placeholders).
 4. En el dashboard, abre **SQL Editor** y ejecuta, en orden:
    - `supabase/migrations/001_auth_profiles.sql`
    - `supabase/migrations/002_roles_activity.sql`
 5. En **Authentication → Providers → Email**, deja Email habilitado.
    Para demos locales puedes desactivar “Confirm email”.
-6. Reinicia el servidor (`ABRIR-KITNEGOCIO` o `npm run dev`).
+6. Reinicia el servidor (`npm run dev` o, en Windows, `ABRIR-KITNEGOCIO.cmd`).
 
 ## Qué crea la migración
 

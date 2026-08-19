@@ -1,9 +1,17 @@
 import { setRequestLocale } from 'next-intl/server';
-import Hero from '@/components/Hero';
-import TrustBar from '@/components/TrustBar';
-import HowItWorks from '@/components/HowItWorks';
-import Pricing from '@/components/Pricing';
-import FloatingCTA from '@/components/FloatingCTA';
+import {
+  FAQ,
+  Features,
+  FloatingCTA,
+  Hero,
+  HowItWorks,
+  MarketEdge,
+  Pricing,
+  TemplatePreview,
+  Testimonials,
+  TrustBar,
+  VisualPillars,
+} from '@/components/landing';
 
 export default async function HomePage({
   params,
@@ -17,8 +25,14 @@ export default async function HomePage({
     <>
       <Hero />
       <TrustBar />
+      <VisualPillars />
+      <Features />
+      <TemplatePreview />
       <HowItWorks />
+      <MarketEdge />
+      <Testimonials />
       <Pricing />
+      <FAQ />
       <FloatingCTA />
     </>
   );

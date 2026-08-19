@@ -1,23 +1,25 @@
-/** Solo assets locales — evita latencia/404 de Unsplash */
+/** Assets locales en /public/images — ilustraciones de marca, sin dependencias externas */
+const img = (file: string) => `/images/${file}`;
+
 export const IMAGES = {
-  hero: '/kitnegocio-hero-premium.webp',
-  invoice: '/kitnegocio-feed-premium.webp',
-  calendar: '/kitnegocio-reels-premium.webp',
-  proposal: '/kitnegocio-whatsapp-premium.webp',
+  hero: img('hero.svg'),
+  invoice: img('feed.svg'),
+  calendar: img('reels.svg'),
+  proposal: img('whatsapp.svg'),
 
-  creatorPhone: '/kitnegocio-hero-premium.webp',
-  studioDesk: '/kitnegocio-feed-premium.webp',
-  reelsShoot: '/kitnegocio-reels-premium.webp',
-  whatsappChat: '/kitnegocio-whatsapp-premium.webp',
-  boutiqueOwner: '/kitnegocio-feed-premium.webp',
-  cafeOwner: '/kitnegocio-reels-premium.webp',
-  beautyPro: '/kitnegocio-whatsapp-premium.webp',
-  agencyContrast: '/kitnegocio-hero-premium.webp',
-  diyChaos: '/kitnegocio-feed-premium.webp',
-  kitClarity: '/kitnegocio-reels-premium.webp',
+  creatorPhone: img('hero.svg'),
+  studioDesk: img('feed.svg'),
+  reelsShoot: img('reels.svg'),
+  whatsappChat: img('whatsapp.svg'),
+  boutiqueOwner: img('feed.svg'),
+  cafeOwner: img('reels.svg'),
+  beautyPro: img('whatsapp.svg'),
+  agencyContrast: img('hero.svg'),
+  diyChaos: img('feed.svg'),
+  kitClarity: img('reels.svg'),
 
-  workspace: '/kitnegocio-feed-premium.webp',
-  enroll: '/kitnegocio-hero-premium.webp',
-  members: '/kitnegocio-whatsapp-premium.webp',
-  support: '/kitnegocio-reels-premium.webp',
+  workspace: img('feed.svg'),
+  enroll: img('hero.svg'),
+  members: img('whatsapp.svg'),
+  support: img('reels.svg'),
 } as const;

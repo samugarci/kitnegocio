@@ -30,7 +30,7 @@ import {
 } from 'lucide-react';
 import { ARCHIVE_PACKS, CURRENT_PACK, FULL_PACK_ZIP, packDownloadUrl } from '@/lib/packs';
 import { IMAGES } from '@/lib/images';
-import Logo from './Logo';
+import Logo from '@/components/brand/Logo';
 
 const formatIcons: Record<string, typeof FileText> = {
   XLSX: FileSpreadsheet,

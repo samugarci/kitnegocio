@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { setRequestLocale } from 'next-intl/server';
-import EnrollmentForm from '@/components/EnrollmentForm';
+import { EnrollmentForm } from '@/components/auth';
 
 export default async function InscripcionPage({
   params,

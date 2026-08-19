@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
-import Logo from './Logo';
+import Logo from '@/components/brand/Logo';
 
 export default function Header() {
   const t = useTranslations('nav');
@@ -41,8 +41,10 @@ export default function Header() {
   if (isAdmin || isMembers) return null;
 
   const links = [
+    { href: isHome ? '#features' : `/${locale}#features`, label: t('features') },
     { href: isHome ? '#how-it-works' : `/${locale}#how-it-works`, label: t('howItWorks') },
     { href: isHome ? '#pricing' : `/${locale}#pricing`, label: t('pricing') },
+    { href: isHome ? '#faq' : `/${locale}#faq`, label: t('faq') },
     { href: `/${locale}/soporte`, label: t('support') },
   ];
 

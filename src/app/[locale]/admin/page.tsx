@@ -1,5 +1,5 @@
 import { setRequestLocale } from 'next-intl/server';
-import AdminDashboard from '@/components/AdminDashboard';
+import { AdminDashboard } from '@/components/admin';
 
 export default async function AdminPage({
   params,

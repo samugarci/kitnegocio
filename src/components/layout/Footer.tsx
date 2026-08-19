@@ -15,7 +15,7 @@ import {
   CheckCircle2,
   ChevronRight,
 } from 'lucide-react';
-import Logo, { LogoMark } from './Logo';
+import Logo, { LogoMark } from '@/components/brand/Logo';
 
 export default function Footer() {
   const t = useTranslations('footer');

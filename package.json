@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true}); console.log('cache cleared')\""
+    "clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true}); console.log('cache cleared')\"",
+    "guides": "node scripts/generate-guides.mjs",
+    "demo:users": "node scripts/setup-presentation-users.mjs",
+    "demo:verify": "node scripts/verify-presentation.mjs"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^2.7.0",

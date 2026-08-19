@@ -1,18 +1,28 @@
 import { existsSync, readFileSync } from 'fs';
 import os from 'os';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const desktopCandidates = [
   path.join(os.homedir(), 'OneDrive', 'Escritorio'),
   path.join(os.homedir(), 'Desktop'),
   path.join(os.homedir(), 'Escritorio'),
 ];
-const desktopPath =
-  desktopCandidates.find((candidate) => existsSync(candidate)) || desktopCandidates[0];
-const credentialsPath = path.join(desktopPath, 'CREDENCIALES-KITNEGOCIO.txt');
+const credentialCandidates = [
+  process.env.CREDENCIALES_PATH,
+  path.join(root, 'data', 'CREDENCIALES-KITNEGOCIO.txt'),
+  ...desktopCandidates.map((dir) => path.join(dir, 'CREDENCIALES-KITNEGOCIO.txt')),
+].filter(Boolean);
+const credentialsPath = credentialCandidates.find((candidate) => existsSync(candidate));
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
 function parseCredentials() {
+  if (!credentialsPath) {
+    throw new Error(
+      'No se encontraron credenciales. Ejecuta npm run demo:users y vuelve a intentar.'
+    );
+  }
   const content = readFileSync(credentialsPath, 'utf8');
   const sections = content.split(/SUPER ADMINISTRADOR|CLIENTE \/ COMPRADOR/);
   const parseSection = (section) => ({
@@ -70,5 +80,5 @@ const checks = {
   protectedDownload: buyerDownload.status === 200,
 };
 
-console.log(JSON.stringify({ ok: Object.values(checks).every(Boolean), checks }));
+console.log(JSON.stringify({ ok: Object.values(checks).every(Boolean), checks, credentialsPath }));
 if (!Object.values(checks).every(Boolean)) process.exitCode = 1;

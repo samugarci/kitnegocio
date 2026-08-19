@@ -3,13 +3,17 @@ const fs = require('fs');
 const path = require('path');
 
 const email = 'cliente.demo@kitnegocio.com';
-const password = 'Cliente-MUCpNkdD!9';
-const storePath = path.join(__dirname, 'data', 'users.json');
+const password = process.env.DEMO_BUYER_PASSWORD || 'Cliente-MUCpNkdD!9';
+const storePath = path.join(__dirname, '..', 'data', 'users.json');
 
 (async () => {
   const hash = await bcrypt.hash(password, 10);
   const ok = await bcrypt.compare(password, hash);
   if (!ok) throw new Error('hash verify failed');
+
+  if (!fs.existsSync(storePath)) {
+    throw new Error(`No existe ${storePath}. Ejecuta npm run demo:users primero.`);
+  }
 
   const store = JSON.parse(fs.readFileSync(storePath, 'utf8'));
   const user = store.users.find((u) => u.email === email);

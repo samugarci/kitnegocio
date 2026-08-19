@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { setRequestLocale } from 'next-intl/server';
-import ResultClient from '@/components/ResultClient';
+import { ResultClient } from '@/components/auth';
 
 export default async function ResultadoPage({
   params,

@@ -2,19 +2,22 @@ import { randomBytes, randomUUID } from 'crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import os from 'os';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import bcrypt from 'bcryptjs';
 
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1')), '..');
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const envPath = path.join(root, '.env.local');
 const storePath = path.join(root, 'data', 'users.json');
+const localCredentialsPath = path.join(root, 'data', 'CREDENCIALES-KITNEGOCIO.txt');
 const desktopCandidates = [
   path.join(os.homedir(), 'OneDrive', 'Escritorio'),
   path.join(os.homedir(), 'Desktop'),
   path.join(os.homedir(), 'Escritorio'),
 ];
-const desktopPath =
-  desktopCandidates.find((candidate) => existsSync(candidate)) || desktopCandidates[0];
-const credentialsPath = path.join(desktopPath, 'CREDENCIALES-KITNEGOCIO.txt');
+const desktopPath = desktopCandidates.find((candidate) => existsSync(candidate));
+const credentialsPath = desktopPath
+  ? path.join(desktopPath, 'CREDENCIALES-KITNEGOCIO.txt')
+  : localCredentialsPath;
 const reset = process.argv.includes('--reset');
 
 function readEnvFile() {
@@ -99,32 +102,33 @@ const buyer = await upsertUser(store, {
 mkdirSync(path.dirname(storePath), { recursive: true });
 writeFileSync(storePath, `${JSON.stringify(store, null, 2)}\n`, 'utf8');
 
-mkdirSync(desktopPath, { recursive: true });
-writeFileSync(
-  credentialsPath,
-  [
-    'KITNEGOCIO — CREDENCIALES DE PRESENTACIÓN',
-    '==========================================',
-    '',
-    'URL: http://localhost:3000/es/miembros#area-privada',
-    '',
-    'SUPER ADMINISTRADOR',
-    `Correo: ${admin.user.email}`,
-    `Contraseña: ${admin.password || '(conservada; ejecute con --reset para cambiarla)'}`,
-    '',
-    'CLIENTE / COMPRADOR',
-    `Correo: ${buyer.user.email}`,
-    `Contraseña: ${buyer.password || '(conservada; ejecute con --reset para cambiarla)'}`,
-    '',
-    'Seguridad:',
-    '- Las contraseñas se guardan cifradas (bcrypt) dentro de la aplicación.',
-    '- Este archivo contiene credenciales de demostración. Elimínelo antes de publicar.',
-    '- En producción, configure Supabase y cambie todas las credenciales.',
-    '',
-    `Generado: ${new Date().toLocaleString('es-MX')}`,
-  ].join('\r\n'),
-  'utf8'
-);
+const body = [
+  'KITNEGOCIO — CREDENCIALES DE PRESENTACIÓN',
+  '==========================================',
+  '',
+  'URL: http://localhost:3000/es/miembros#area-privada',
+  '',
+  'SUPER ADMINISTRADOR',
+  `Correo: ${admin.user.email}`,
+  `Contraseña: ${admin.password || '(conservada; ejecute con --reset para cambiarla)'}`,
+  '',
+  'CLIENTE / COMPRADOR',
+  `Correo: ${buyer.user.email}`,
+  `Contraseña: ${buyer.password || '(conservada; ejecute con --reset para cambiarla)'}`,
+  '',
+  'Seguridad:',
+  '- Las contraseñas se guardan cifradas (bcrypt) dentro de la aplicación.',
+  '- Este archivo contiene credenciales de demostración. Elimínelo antes de publicar.',
+  '- En producción, configure Supabase y cambie todas las credenciales.',
+  '',
+  `Generado: ${new Date().toLocaleString('es-MX')}`,
+].join('\r\n');
+
+mkdirSync(path.dirname(credentialsPath), { recursive: true });
+writeFileSync(credentialsPath, body, 'utf8');
+if (credentialsPath !== localCredentialsPath) {
+  writeFileSync(localCredentialsPath, body, 'utf8');
+}
 
 console.log(
   JSON.stringify({
@@ -133,5 +137,6 @@ console.log(
     admin: admin.user.email,
     buyer: buyer.user.email,
     credentialsPath,
+    localCredentialsPath,
   })
 );

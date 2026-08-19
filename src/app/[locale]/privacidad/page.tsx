@@ -1,5 +1,5 @@
 import { setRequestLocale } from 'next-intl/server';
-import LegalContent from '@/components/LegalContent';
+import { LegalContent } from '@/components/legal';
 import Link from 'next/link';
 
 export default async function PrivacidadPage({

@@ -1,6 +1,6 @@
-# KitNegocio — Packs mensuales Instagram & WhatsApp Business
+# KitNegocio — Packs de Instagram y WhatsApp Business
 
-Suscripción ($16 USD/mes, cobro inmediato al inscribirse, +7 días de bono) con packs de posts, Reels, Stories y mensajes de WhatsApp Business para **tu** negocio. Landing bilingüe, Stripe y área de miembros.
+Acceso único (USD $19.99) a catálogos de posts, Reels, Stories y mensajes de WhatsApp Business. Landing bilingüe (ES/EN), Stripe y área de miembros.
 
 ## Requisitos
 
@@ -9,35 +9,39 @@ Suscripción ($16 USD/mes, cobro inmediato al inscribirse, +7 días de bono) con
 
 ## Instalación
 
+```bash
+npm install
+cp .env.example .env.local
+```
+
+En Windows PowerShell:
+
 ```powershell
-cd c:\Users\rudug\OneDrive\Escritorio\workanna
 npm install
 copy .env.example .env.local
 ```
 
-## Configuración Stripe
+## Configuración
 
-1. Crea cuenta en [stripe.com](https://stripe.com)
-2. Obtén tus claves en [dashboard.stripe.com/apikeys](https://dashboard.stripe.com/apikeys)
-3. Activa el **Customer Portal** en Settings → Billing → Customer portal
-4. Edita `.env.local`:
+Edita `.env.local` con tus claves. Sin Stripe ni Supabase, la app corre en **modo demo** (auth local en `data/users.json` y checkout simulado).
 
-```env
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_tu_clave
-STRIPE_SECRET_KEY=sk_test_tu_clave
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-NEXT_PUBLIC_SUPPORT_EMAIL=soporte@kitnegocio.com
-```
+Guías:
 
-> **Modo demo:** Sin claves Stripe configuradas, el flujo simula suscripción y cualquier email con `@` accede al área de miembros.
+- Stripe y variables: `.env.example`
+- Auth y base de datos: [docs/supabase.md](docs/supabase.md)
+- Plan de negocio: [docs/plan-negocio.md](docs/plan-negocio.md)
+- Documento legal: [docs/legal.md](docs/legal.md)
 
 ## Ejecutar
 
-```powershell
+```bash
 npm run dev
 ```
 
+En Windows también puedes usar `ABRIR-KITNEGOCIO.cmd`.
+
 Abre:
+
 - Español: http://localhost:3000/es
 - Inglés: http://localhost:3000/en
 
@@ -45,23 +49,60 @@ Abre:
 
 | Ruta | Descripción |
 |------|-------------|
-| `/es` o `/en` | Landing principal |
-| `/es/inscripcion` | Registro + prueba gratis 7 días |
-| `/es/resultado` | Confirmación post-registro |
-| `/es/miembros` | Área de miembros (descargas) |
-| `/es/soporte` | Contacto soporte |
-| `/es/terminos` | Términos y Condiciones |
-| `/es/privacidad` | Política de Privacidad |
+| `/es` o `/en` | Landing |
+| `/es/inscripcion` | Compra / registro |
+| `/es/resultado` | Confirmación |
+| `/es/miembros` | Área privada (descargas) |
+| `/es/admin` | Panel super admin |
+| `/es/soporte` | Contacto |
+| `/es/terminos` | Términos |
+| `/es/privacidad` | Privacidad |
+| `/es/cookies` | Cookies |
+| `/es/aviso-legal` | Aviso legal |
 
-## Plantillas
+## Estructura
 
-Los archivos de demo están en `public/packs/`. Reemplázalos con tus plantillas reales (XLSX, PDF, Canva exports).
+```
+src/
+  app/                 # Rutas Next.js (páginas y API)
+  components/
+    layout/            # Header, footer, cookies, idioma
+    landing/           # Secciones de la home
+    auth/              # Inscripción y resultado
+    members/           # Área de miembros
+    admin/             # Panel admin
+    support/           # Formulario de soporte
+    legal/             # Textos legales
+    brand/             # Logo
+  lib/                 # Auth, Stripe, packs, imágenes
+  i18n/                # Locales
+messages/              # Traducciones ES/EN
+public/images/         # Ilustraciones de marca
+public/packs/          # Archivos descargables
+docs/                  # Documentación de producto
+scripts/               # Guías PDF, usuarios demo, launcher
+supabase/migrations/   # SQL de perfiles y roles
+```
+
+## Scripts
+
+| Comando | Qué hace |
+|---------|----------|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción |
+| `npm start` | Sirve el build |
+| `npm run lint` | ESLint |
+| `npm run guides` | Genera los PDF del pack de marzo |
+| `npm run demo:users` | Crea admin y comprador de demo |
+| `npm run demo:verify` | Comprueba login, admin y descargas |
+
+Los packs de demo viven en `public/packs/`. Tras `npm run guides` se regeneran las guías PDF de marzo.
 
 ## Producción
 
-```powershell
+```bash
 npm run build
 npm start
 ```
 
-Despliega en [Vercel](https://vercel.com) y configura las variables de entorno.
+Despliega en [Vercel](https://vercel.com) y configura las mismas variables de `.env.example`.

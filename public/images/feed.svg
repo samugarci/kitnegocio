@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Feed de Instagram">
+  <rect width="1200" height="900" fill="#ECFEFF"/>
+  <rect x="80" y="70" width="1040" height="760" rx="36" fill="#FFFFFF"/>
+  <g>
+    <rect x="120" y="110" width="300" height="300" rx="24" fill="#0E7490"/>
+    <rect x="450" y="110" width="300" height="300" rx="24" fill="#0B5F75"/>
+    <rect x="780" y="110" width="300" height="300" rx="24" fill="#F0592A"/>
+    <rect x="120" y="440" width="300" height="300" rx="24" fill="#164E63"/>
+    <rect x="450" y="440" width="300" height="300" rx="24" fill="#F0592A" opacity="0.85"/>
+    <rect x="780" y="440" width="300" height="300" rx="24" fill="#0E7490" opacity="0.7"/>
+  </g>
+  <circle cx="170" cy="160" r="18" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="200" y="150" width="120" height="12" rx="6" fill="#FFFFFF" opacity="0.7"/>
+</svg>

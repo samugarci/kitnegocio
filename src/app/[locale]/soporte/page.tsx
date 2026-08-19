@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import SupportForm from '@/components/SupportForm';
+import { SupportForm } from '@/components/support';
 
 export default async function SoportePage({
   params,

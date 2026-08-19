@@ -1,7 +1,9 @@
 $ErrorActionPreference = 'SilentlyContinue'
 
-$project = 'C:\dev\kitnegocio'
+$project = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $url = 'http://localhost:3000/es'
+
+Set-Location $project
 
 function Test-KitNegocio {
   try {

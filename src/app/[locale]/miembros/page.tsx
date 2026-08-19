@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { setRequestLocale } from 'next-intl/server';
-import MembersClient from '@/components/MembersClient';
+import { MembersClient } from '@/components/members';
 
 export default async function MiembrosPage({
   params,
