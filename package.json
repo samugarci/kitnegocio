@@ -6,10 +6,10 @@
     "node": ">=18"
   },
   "scripts": {
-    "dev": "next dev -H 127.0.0.1 -p 3000",
-    "dev:turbo": "next dev --turbo -H 127.0.0.1 -p 3000",
+    "dev": "next dev -H 0.0.0.0 -p 3000",
+    "dev:turbo": "next dev --turbo -H 0.0.0.0 -p 3000",
     "build": "next build",
-    "start": "next start -H 127.0.0.1 -p 3000",
+    "start": "next start -H 0.0.0.0 -p 3000",
     "lint": "next lint",
     "clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true}); console.log('cache cleared')\"",
     "guides": "node scripts/generate-guides.mjs",

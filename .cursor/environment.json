@@ -1,0 +1,17 @@
+{
+  "name": "KitNegocio",
+  "install": "test -f .env.local || cp .env.example .env.local; npm ci",
+  "terminals": [
+    {
+      "name": "KitNegocio",
+      "command": "npm run dev",
+      "description": "Servidor Next.js en el puerto 3000 (http://127.0.0.1:3000/es)"
+    }
+  ],
+  "ports": [
+    {
+      "name": "web",
+      "port": 3000
+    }
+  ]
+}
